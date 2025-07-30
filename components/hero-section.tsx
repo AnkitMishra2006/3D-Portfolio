@@ -22,18 +22,19 @@ export default function HeroSection() {
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl w-full">
         {/* Left side - Text content */}
         <div className="text-center lg:text-left order-2 lg:order-1">
-          {/* Name - Single line, no cutting */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight whitespace-nowrap">
-            ANKIT KUMAR MISHRA
+          {/* Name - Allow wrapping but keep words together */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight">
+            <span className="inline-block">ANKIT</span> <span className="inline-block">KUMAR</span>{" "}
+            <span className="inline-block">MISHRA</span>
           </h1>
 
           {/* Tagline */}
-          <p className="text-xl sm:text-2xl md:text-3xl text-cyan-400 mb-4 font-light tracking-wider">
+          <p className="text-lg sm:text-xl md:text-2xl text-cyan-400 mb-4 font-light tracking-wider">
             {personalInfo.title}
           </p>
 
           {/* Short Description */}
-          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
             {personalInfo.shortDescription}
           </p>
 

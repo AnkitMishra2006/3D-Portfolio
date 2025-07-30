@@ -37,9 +37,9 @@ export const skills = [
   { name: "GitHub", color: "#f39c12", category: "Tools" },
   { name: "Postman", color: "#FF6C37", category: "Tools" },
   { name: "Docker", color: "#2496ED", category: "Tools" },
-  { name: "Machine Learning", color: "#FF6F00", category: "Learning" },
-  { name: "React Native", color: "#61DAFB", category: "Learning" },
-  { name: "Linux", color: "#FCC624", category: "Learning" },
+  { name: "Machine Learning", color: "#FF6F00", category: "Currently Learning" },
+  { name: "React Native", color: "#61DAFB", category: "Currently Learning" },
+  { name: "Linux", color: "#FCC624", category: "Currently Learning" },
 ]
 
 export const projects = [

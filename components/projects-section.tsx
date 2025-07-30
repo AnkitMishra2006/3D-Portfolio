@@ -153,13 +153,13 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Project Modal */}
+      {/* Project Modal - Fixed size and scrollable */}
       {selectedProject && selectedProjectData && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            {/* Modal Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-700">
-              <h3 className="text-3xl font-bold text-white">{selectedProjectData.name}</h3>
+          <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-3xl h-[80vh] flex flex-col">
+            {/* Modal Header - Fixed */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-700 flex-shrink-0">
+              <h3 className="text-2xl font-bold text-white">{selectedProjectData.name}</h3>
               <button
                 onClick={closeProjectModal}
                 className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
@@ -168,13 +168,18 @@ export default function ProjectsSection() {
               </button>
             </div>
 
-            {/* Modal Content */}
-            <div className="p-6">
-              <div className="grid lg:grid-cols-2 gap-8">
+            {/* Modal Content - Scrollable */}
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="space-y-6">
+                {/* Description */}
                 <div>
-                  <p className="text-gray-300 leading-relaxed mb-6">{selectedProjectData.longDescription}</p>
+                  <p className="text-gray-300 leading-relaxed">{selectedProjectData.longDescription}</p>
+                </div>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
+                {/* Technologies */}
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-3">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2">
                     {selectedProjectData.tech.map((tech) => (
                       <span
                         key={tech}
@@ -184,27 +189,29 @@ export default function ProjectsSection() {
                       </span>
                     ))}
                   </div>
-
-                  <div className="flex space-x-4">
-                    <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300">
-                      View Live Demo
-                    </button>
-                    <button className="px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-lg hover:border-gray-500 hover:text-white transition-all duration-300">
-                      View Source Code
-                    </button>
-                  </div>
                 </div>
 
+                {/* Key Features */}
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-4">Key Features</h4>
-                  <ul className="space-y-3">
+                  <h4 className="text-lg font-bold text-white mb-3">Key Features</h4>
+                  <ul className="space-y-2">
                     {selectedProjectData.features.map((feature, index) => (
                       <li key={index} className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-300">{feature}</span>
+                        <span className="text-gray-300 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex space-x-4 pt-4">
+                  <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300">
+                    View Live Demo
+                  </button>
+                  <button className="px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-lg hover:border-gray-500 hover:text-white transition-all duration-300">
+                    View Source Code
+                  </button>
                 </div>
               </div>
             </div>
