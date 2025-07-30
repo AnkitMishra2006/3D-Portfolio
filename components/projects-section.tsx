@@ -52,6 +52,25 @@ export default function ProjectsSection() {
     }
   }
 
+  const getProjectBorderStyle = (project: any) => {
+    const gradientMap: { [key: string]: string } = {
+      "from-green-400 to-green-600": "linear-gradient(135deg, #4ade80, #16a34a)",
+      "from-orange-400 to-orange-600": "linear-gradient(135deg, #fb923c, #ea580c)",
+      "from-indigo-400 to-indigo-600": "linear-gradient(135deg, #818cf8, #4f46e5)",
+      "from-emerald-400 to-emerald-600": "linear-gradient(135deg, #34d399, #059669)",
+      "from-blue-400 to-blue-600": "linear-gradient(135deg, #60a5fa, #2563eb)",
+      "from-orange-400 to-orange-600": "linear-gradient(135deg, #fb923c, #ea580c)",
+      "from-violet-500 to-indigo-600": "linear-gradient(135deg, #8b5cf6, #4f46e5)",
+      "from-lime-400 to-lime-600": "linear-gradient(135deg, #a3e635, #65a30d)",
+    }
+
+    return {
+      background: gradientMap[project.gradient] || "linear-gradient(135deg, #4ade80, #16a34a)",
+      padding: "2px",
+      borderRadius: "16px",
+    }
+  }
+
   return (
     <section id="projects" className="min-h-screen py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -94,10 +113,11 @@ export default function ProjectsSection() {
           {displayedProjects.map((project) => (
             <div
               key={project.id}
-              className={`bg-gradient-to-br ${project.gradient} p-1 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-105`}
+              className="cursor-pointer transition-all duration-300 hover:scale-105"
               onClick={() => openProjectModal(project.id)}
+              style={getProjectBorderStyle(project)}
             >
-              <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-6 h-full">
+              <div className="bg-black/95 backdrop-blur-sm rounded-2xl p-6 h-full">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl md:text-2xl font-bold text-white">{project.name}</h3>
                   <span
