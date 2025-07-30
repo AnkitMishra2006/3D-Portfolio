@@ -1,11 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import gsap from "gsap"
+import { useState } from "react"
 import { projects } from "@/constants/data"
 
 export default function ProjectsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
   const [filter, setFilter] = useState("all")
 
@@ -13,47 +11,6 @@ export default function ProjectsSection() {
   const filters = ["all", ...allTechs]
 
   const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.tech.includes(filter))
-
-  useEffect(() => {
-    const projectCards = gsap.utils.toArray(".project-card")
-
-    projectCards.forEach((card: any, index) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 100,
-        rotation: index % 2 === 0 ? -5 : 5,
-        duration: 1,
-        delay: index * 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      })
-
-      const handleMouseEnter = () => {
-        gsap.to(card, {
-          scale: 1.05,
-          rotation: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        })
-      }
-
-      const handleMouseLeave = () => {
-        gsap.to(card, {
-          scale: 1,
-          rotation: index % 2 === 0 ? -2 : 2,
-          duration: 0.3,
-          ease: "power2.out",
-        })
-      }
-
-      card.addEventListener("mouseenter", handleMouseEnter)
-      card.addEventListener("mouseleave", handleMouseLeave)
-    })
-  }, [filteredProjects])
 
   const openProjectModal = (projectId: number) => {
     setSelectedProject(projectId)
@@ -66,19 +23,19 @@ export default function ProjectsSection() {
   const selectedProjectData = projects.find((p) => p.id === selectedProject)
 
   return (
-    <section ref={sectionRef} className="min-h-screen py-20 px-6">
+    <section className="min-h-screen py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-8 fade-in">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8">
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">PROJECTS</span>
         </h2>
 
-        <p className="text-xl text-gray-300 text-center mb-12 fade-in max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-300 text-center mb-12 max-w-3xl mx-auto">
           A showcase of my technical projects, each demonstrating different aspects of full-stack development, from web
           applications to browser extensions and interactive games.
         </p>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12 fade-in">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map((filterOption) => (
             <button
               key={filterOption}
@@ -95,16 +52,16 @@ export default function ProjectsSection() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`project-card bg-gradient-to-br ${project.gradient} p-1 rounded-2xl cursor-pointer transition-all duration-300`}
+              className={`bg-gradient-to-br ${project.gradient} p-1 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-105`}
               onClick={() => openProjectModal(project.id)}
             >
               <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-6 h-full">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-white">{project.name}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">{project.name}</h3>
                   <span
                     className={`px-2 py-1 rounded-full text-xs ${
                       project.status === "Completed"
@@ -153,11 +110,11 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Project Modal - Fixed size and scrollable */}
+      {/* Project Modal */}
       {selectedProject && selectedProjectData && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-3xl h-[80vh] flex flex-col">
-            {/* Modal Header - Fixed */}
+            {/* Modal Header */}
             <div className="flex justify-between items-center p-6 border-b border-gray-700 flex-shrink-0">
               <h3 className="text-2xl font-bold text-white">{selectedProjectData.name}</h3>
               <button
@@ -168,15 +125,13 @@ export default function ProjectsSection() {
               </button>
             </div>
 
-            {/* Modal Content - Scrollable */}
+            {/* Modal Content */}
             <div className="flex-1 overflow-y-auto p-6">
               <div className="space-y-6">
-                {/* Description */}
                 <div>
                   <p className="text-gray-300 leading-relaxed">{selectedProjectData.longDescription}</p>
                 </div>
 
-                {/* Technologies */}
                 <div>
                   <h4 className="text-lg font-bold text-white mb-3">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
@@ -191,7 +146,6 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Key Features */}
                 <div>
                   <h4 className="text-lg font-bold text-white mb-3">Key Features</h4>
                   <ul className="space-y-2">
@@ -204,8 +158,7 @@ export default function ProjectsSection() {
                   </ul>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex space-x-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300">
                     View Live Demo
                   </button>

@@ -1,9 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useEffect, useRef, useState } from "react"
-import gsap from "gsap"
+import { useRef, useState } from "react"
 import { personalInfo, emailConfig } from "@/constants/data"
 
 interface FormData {
@@ -13,47 +11,11 @@ interface FormData {
 }
 
 export default function ContactSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [statusMessage, setStatusMessage] = useState("")
-
-  useEffect(() => {
-    const contactItems = gsap.utils.toArray(".contact-item")
-    const formFields = gsap.utils.toArray(".form-field")
-
-    contactItems.forEach((item: any, index) => {
-      gsap.from(item, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      })
-    })
-
-    formFields.forEach((field: any, index) => {
-      gsap.from(field, {
-        opacity: 0,
-        x: index % 2 === 0 ? -50 : 50,
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: field,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      })
-    })
-  }, [])
 
   const createEmailTemplate = (name: string, email: string, message: string) => {
     return `
@@ -132,7 +94,6 @@ export default function ContactSection() {
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
-    // Form validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setSubmitStatus("error")
       setStatusMessage("Please fill in all fields.")
@@ -140,7 +101,6 @@ export default function ContactSection() {
       return
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus("error")
@@ -171,15 +131,6 @@ export default function ContactSection() {
         setSubmitStatus("success")
         setStatusMessage("Thank you! Your message has been sent successfully. I'll get back to you soon!")
         setFormData({ name: "", email: "", message: "" })
-
-        // Success animation
-        gsap.to(formRef.current, {
-          scale: 1.02,
-          duration: 0.2,
-          yoyo: true,
-          repeat: 1,
-          ease: "power2.inOut",
-        })
       } else {
         throw new Error(result.message || "Failed to send message")
       }
@@ -193,37 +144,40 @@ export default function ContactSection() {
   }
 
   return (
-    <section ref={sectionRef} className="min-h-screen py-20 px-6">
+    <section className="min-h-screen py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 fade-in">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16">
           <span className="bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">CONTACT</span>
         </h2>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="contact-item">
-              <h3 className="text-3xl font-bold text-white mb-6">Let's Connect!</h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Let's Connect!</h3>
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8">
                 I'm always open to discussing new opportunities, collaborations, or just having a chat about technology
                 and development. Feel free to reach out!
               </p>
             </div>
 
             <div className="space-y-6">
-              <div className="contact-item flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white text-xl">📧</span>
                 </div>
                 <div>
                   <p className="text-gray-400 text-sm">Email</p>
-                  <a href={`mailto:${personalInfo.email}`} className="text-white hover:text-cyan-400 transition-colors">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-white hover:text-cyan-400 transition-colors break-all"
+                  >
                     {personalInfo.email}
                   </a>
                 </div>
               </div>
 
-              <div className="contact-item flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-purple-500/50 transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-purple-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white text-xl">💼</span>
                 </div>
                 <div>
@@ -239,8 +193,8 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="contact-item flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white text-xl">🐙</span>
                 </div>
                 <div>
@@ -256,8 +210,8 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="contact-item flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-yellow-500/50 transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white text-xl">💻</span>
                 </div>
                 <div>
@@ -277,7 +231,7 @@ export default function ContactSection() {
 
           <div>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div className="form-field">
+              <div>
                 <label htmlFor="name" className="block text-white font-medium mb-2">
                   Name *
                 </label>
@@ -293,7 +247,7 @@ export default function ContactSection() {
                 />
               </div>
 
-              <div className="form-field">
+              <div>
                 <label htmlFor="email" className="block text-white font-medium mb-2">
                   Email *
                 </label>
@@ -309,7 +263,7 @@ export default function ContactSection() {
                 />
               </div>
 
-              <div className="form-field">
+              <div>
                 <label htmlFor="message" className="block text-white font-medium mb-2">
                   Message *
                 </label>
@@ -337,7 +291,6 @@ export default function ContactSection() {
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
-              {/* Status Message */}
               {submitStatus !== "idle" && (
                 <div
                   className={`p-4 rounded-lg text-center transition-all duration-300 ${
@@ -354,7 +307,9 @@ export default function ContactSection() {
         </div>
 
         <div className="text-center mt-20 pt-8 border-t border-gray-800">
-          <p className="text-gray-400">© 2024 {personalInfo.name}. Built with Next.js, Three.js, and GSAP.</p>
+          <p className="text-gray-400 text-sm md:text-base">
+            © 2024 {personalInfo.name}. Built with Next.js, Three.js, and GSAP.
+          </p>
         </div>
       </div>
     </section>

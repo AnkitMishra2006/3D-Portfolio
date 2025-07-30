@@ -1,31 +1,8 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
 import { experiences } from "@/constants/data"
 
 export default function ExperienceSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const timelineItems = gsap.utils.toArray(".timeline-item")
-
-    timelineItems.forEach((item: any, index) => {
-      gsap.from(item, {
-        opacity: 0,
-        x: index % 2 === 0 ? -100 : 100,
-        duration: 1,
-        delay: index * 0.3,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      })
-    })
-  }, [])
-
   const getTypeColor = (type: string) => {
     switch (type) {
       case "work":
@@ -53,9 +30,9 @@ export default function ExperienceSection() {
   }
 
   return (
-    <section ref={sectionRef} className="min-h-screen py-20 px-6">
+    <section className="min-h-screen py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 fade-in">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16">
           <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
             EXPERIENCE & EDUCATION
           </span>
@@ -63,18 +40,20 @@ export default function ExperienceSection() {
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-400 via-purple-500 to-pink-500 hidden md:block"></div>
 
           {experiences.map((exp, index) => (
             <div
               key={exp.id}
-              className={`timeline-item flex items-center mb-16 ${index % 2 === 0 ? "" : "flex-row-reverse"}`}
+              className={`flex flex-col md:flex-row items-center mb-16 ${index % 2 === 0 ? "" : "md:flex-row-reverse"}`}
             >
-              <div className={`w-1/2 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8"}`}>
+              <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} mb-8 md:mb-0`}>
                 <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-gray-600 transition-all duration-300">
-                  <div className="flex items-center justify-between mb-3">
+                  <div
+                    className={`flex items-center justify-between mb-3 ${index % 2 === 0 ? "md:flex-row-reverse md:space-x-reverse" : ""}`}
+                  >
                     <div
-                      className={`flex items-center space-x-2 ${index % 2 === 0 ? "flex-row-reverse space-x-reverse" : ""}`}
+                      className={`flex items-center space-x-2 ${index % 2 === 0 ? "md:flex-row-reverse md:space-x-reverse" : ""}`}
                     >
                       <span className="text-2xl">{getTypeIcon(exp.type)}</span>
                       <span
@@ -85,10 +64,10 @@ export default function ExperienceSection() {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{exp.title}</h3>
                   <p className="text-cyan-400 font-medium mb-2">{exp.company}</p>
                   <p className="text-gray-400 text-sm mb-4">{exp.period}</p>
-                  <p className="text-gray-300 leading-relaxed mb-4">{exp.description}</p>
+                  <p className="text-gray-300 leading-relaxed mb-4 text-sm md:text-base">{exp.description}</p>
 
                   {/* Skills */}
                   <div className="mb-4">
@@ -118,10 +97,13 @@ export default function ExperienceSection() {
               </div>
 
               <div
-                className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r ${getTypeColor(exp.type)} rounded-full border-4 border-black flex items-center justify-center`}
+                className={`w-6 h-6 bg-gradient-to-r ${getTypeColor(exp.type)} rounded-full border-4 border-black flex items-center justify-center flex-shrink-0 hidden md:flex`}
               >
                 <div className="w-2 h-2 bg-white rounded-full"></div>
               </div>
+
+              {/* Mobile spacer */}
+              <div className="w-full md:w-1/2 hidden md:block"></div>
             </div>
           ))}
         </div>
