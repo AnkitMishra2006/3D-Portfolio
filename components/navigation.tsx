@@ -2,21 +2,30 @@
 
 import { useEffect, useState } from "react"
 import gsap from "gsap"
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-]
+import { navItems } from "@/constants/data"
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+
+      // Update active section based on scroll position
+      const sections = navItems.map((item) => item.href.substring(1))
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+
+      if (currentSection) {
+        setActiveSection(currentSection)
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -34,6 +43,13 @@ export default function Navigation() {
     })
   }, [])
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -48,14 +64,20 @@ export default function Navigation() {
 
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                className="nav-item text-white hover:text-cyan-400 transition-colors duration-300 relative group"
+                onClick={() => scrollToSection(item.href)}
+                className={`nav-item transition-colors duration-300 relative group ${
+                  activeSection === item.href.substring(1) ? "text-cyan-400" : "text-white hover:text-cyan-400"
+                }`}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 ${
+                    activeSection === item.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </button>
             ))}
           </div>
 

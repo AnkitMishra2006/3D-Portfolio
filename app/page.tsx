@@ -116,11 +116,21 @@ export default function Portfolio() {
 
       {/* Content */}
       <div className="relative z-10">
-        <HeroSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <ContactSection />
+        <section id="home">
+          <HeroSection />
+        </section>
+        <section id="skills">
+          <SkillsSection />
+        </section>
+        <section id="projects">
+          <ProjectsSection />
+        </section>
+        <section id="experience">
+          <ExperienceSection />
+        </section>
+        <section id="contact">
+          <ContactSection />
+        </section>
       </div>
     </div>
   )
