@@ -272,16 +272,6 @@ export default function ContactSection() {
                   </a>
                 </div>
               </div>
-
-              <div className="contact-item flex items-center space-x-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl">📍</span>
-                </div>
-                <div>
-                  <p className="text-gray-400 text-sm">Location</p>
-                  <p className="text-white">{personalInfo.location}</p>
-                </div>
-              </div>
             </div>
           </div>
 
