@@ -1,8 +1,7 @@
 export const personalInfo = {
   name: "ANKIT KUMAR MISHRA",
   title: "Full Stack Developer",
-  shortDescription:
-    "Passionate about creating innovative solutions with modern technologies",
+  shortDescription: "Passionate about creating innovative solutions with modern technologies",
   description:
     "Motivated Full Stack Developer with experience in React, Next.js, Flask, FastAPI, and programming languages like Python, C, C++, and Java. Proficient in MySQL and MongoDB, with a strong foundation in OOPS, DBMS, and Data Structures.",
   email: "ankit.kumar.mishra2006@gmail.com",
@@ -10,14 +9,13 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ankit-kumar-mishra-0509982a5/",
   github: "https://github.com/ankitmishra2006",
   codolio: "https://codolio.com/profile/ankitmishra",
-  resume:
-    "https://drive.google.com/file/d/1pPD2jW4DdLCgFev8Id4vw0YXMUTL9ZmK/view?usp=drive_link",
-};
+  resume: "https://drive.google.com/file/d/1pPD2jW4DdLCgFev8Id4vw0YXMUTL9ZmK/view?usp=drive_link",
+}
 
 export const emailConfig = {
   apiUrl: "https://mail-sender-snowy.vercel.app/api/send-email",
   recipientEmail: "ankit.kumar.mishra2006@gmail.com",
-};
+}
 
 export const skills = [
   { name: "Python", color: "#3776AB", category: "Programming" },
@@ -46,7 +44,7 @@ export const skills = [
   },
   { name: "React Native", color: "#61DAFB", category: "Currently Learning" },
   { name: "Linux", color: "#FCC624", category: "Currently Learning" },
-];
+]
 
 export const projects = [
   {
@@ -56,14 +54,7 @@ export const projects = [
       "A comprehensive travel planning web application built with Express.js that enables users to browse destinations, create personalized itineraries, and receive AI-powered recommendations based on preferences and budget.",
     longDescription:
       "WanderLust is a full-featured travel planning platform that combines modern web technologies with intuitive design. The application features secure user authentication using cookies and session management, allowing travelers to save and manage their travel plans across sessions. Built with a robust RESTful API architecture, it handles complex data operations for destinations, user preferences, and booking integrations.",
-    tech: [
-      "Express.js",
-      "Bootstrap",
-      "MongoDB",
-      "Authentication",
-      "RESTful APIs",
-      "Session Management",
-    ],
+    tech: ["Node.js", "Express.js", "Bootstrap", "MongoDB", "Authentication", "RESTful APIs", "Session Management"],
     features: [
       "User authentication with secure session management",
       "Interactive destination browsing with filters",
@@ -86,13 +77,7 @@ export const projects = [
       "An engaging 2D endless runner game developed with the Kaplay library, featuring dynamic gameplay mechanics, progressive difficulty scaling, and immersive visual effects that create an addictive gaming experience.",
     longDescription:
       "Sonic Runner represents a modern take on the classic endless runner genre, built entirely with JavaScript and the Kaplay game development library. The game features sophisticated collision detection, smooth character animations, and a dynamic scoring system that adapts to player performance. With carefully crafted game physics and responsive controls, it delivers a console-quality gaming experience in the browser.",
-    tech: [
-      "Kaplay Library",
-      "JavaScript",
-      "2D Graphics",
-      "Game Physics",
-      "Canvas API",
-    ],
+    tech: ["Kaplay", "JavaScript", "2D Graphics", "Game Physics"],
     features: [
       "Smooth character movement and jumping mechanics",
       "Dynamic obstacle generation and collision detection",
@@ -114,15 +99,7 @@ export const projects = [
       "An AI-powered resume analyzer that evaluates PDF resumes based on ATS compatibility and key hiring criteria, providing instant feedback and improvement tips to job seekers.",
     longDescription:
       "Resumind is a full-stack AI tool designed to help users optimize their resumes for modern hiring systems. By uploading a PDF resume and providing job-specific details, users receive a comprehensive analysis that includes ATS score, tone/style feedback, content suggestions, structure improvements, and skill highlights. The application uses Claude 3 for natural language understanding, and features a highly responsive UI built with React and Vite. Secure file handling and analysis are powered by Puter.js. Resumind empowers users to craft job-winning resumes with real-time insights and visual feedback.",
-    tech: [
-      "React",
-      "Vite",
-      "Puter.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "Vercel",
-      "Zustand",
-    ],
+    tech: ["React", "Vite", "Puter.js", "Tailwind CSS", "TypeScript", "Vercel", "Zustand"],
     features: [
       "AI-powered resume analysis using Claude 3",
       "Instant ATS scoring out of 100",
@@ -137,7 +114,7 @@ export const projects = [
     color: "#6366F1",
     gradient: "from-indigo-400 to-indigo-600",
     demoUrl: "https://resumind-resume-analyzer.vercel.app/auth",
-    githubUrl: "https://github.com/AnkitMishra2006/Resumind", // Replace with your repo URL if available
+    githubUrl: "https://github.com/AnkitMishra2006/Resumind",
     status: "Completed",
   },
   {
@@ -146,18 +123,8 @@ export const projects = [
     description:
       "A powerful platform that allows users to build personalized AI chatbots (companions) trained on specific topics, enabling interactive voice and text-based learning.",
     longDescription:
-      "Converso is an AI-powered learning assistant builder where users can create custom chatbot companions focused on specific topics of their choice. Each companion responds to user queries in real-time via voice or text using Vapi’s AI agent capabilities. The platform incorporates Clerk for secure user authentication and subscription management, offering a premium SaaS experience. Converso features a clean and modern UI with full support for dynamic companion creation, personalized interaction, and scalable monetization. Ideal for learners, educators, and creators who want to build their own AI tutors or micro-teaching bots.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Next.js",
-      "Vapi (Voice AI)",
-      "Clerk (Auth + Billing)",
-      "Tailwind CSS",
-      "Zustand",
-      "Vercel",
-    ],
+      "Converso is an AI-powered learning assistant builder where users can create custom chatbot companions focused on specific topics of their choice. Each companion responds to user queries in real-time via voice or text using Vapi's AI agent capabilities. The platform incorporates Clerk for secure user authentication and subscription management, offering a premium SaaS experience. Converso features a clean and modern UI with full support for dynamic companion creation, personalized interaction, and scalable monetization. Ideal for learners, educators, and creators who want to build their own AI tutors or micro-teaching bots.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Vapi", "Clerk", "Tailwind CSS", "Zustand", "Vercel"],
     features: [
       "Create AI companions trained on specific topics",
       "Voice and text-based conversation powered by Vapi",
@@ -172,7 +139,7 @@ export const projects = [
     color: "#10B981",
     gradient: "from-emerald-400 to-emerald-600",
     demoUrl: "https://converso-six.vercel.app",
-    githubUrl: "https://github.com/AnkitMishra2006/Converso", // Replace with GitHub repo if available
+    githubUrl: "https://github.com/AnkitMishra2006/Converso",
     status: "Completed",
   },
   {
@@ -182,13 +149,7 @@ export const projects = [
       "An intelligent browser extension that leverages Google's Gemini API to provide instant article summarization in multiple formats including brief overviews, detailed summaries, and structured bullet points.",
     longDescription:
       "This Chrome extension revolutionizes how users consume online content by providing instant, AI-powered article summarization. The extension integrates seamlessly with the browser, offering a clean popup interface that processes articles in real-time. Users can choose from three summarization modes: brief for quick overviews, detailed for comprehensive understanding, and bullet points for structured information.",
-    tech: [
-      "JavaScript",
-      "Gemini API",
-      "Chrome Extension APIs",
-      "HTML/CSS",
-      "Manifest V3",
-    ],
+    tech: ["JavaScript", "Gemini API", "Chrome Extension APIs", "HTML/CSS", "Manifest V3"],
     features: [
       "Three summarization modes (brief, detailed, bullet points)",
       "Real-time article processing",
@@ -199,8 +160,7 @@ export const projects = [
     ],
     color: "#2196F3",
     gradient: "from-blue-400 to-blue-600",
-    demoUrl:
-      "https://drive.google.com/file/d/1y1uShnFD_tyRpvQx387UNsI2Z4ZkH-Uc/view?usp=sharing",
+    demoUrl: "https://drive.google.com/file/d/1y1uShnFD_tyRpvQx387UNsI2Z4ZkH-Uc/view?usp=sharing",
     githubUrl: "https://github.com/AnkitMishra2006/Article-Summarizer",
     status: "Completed",
   },
@@ -211,17 +171,7 @@ export const projects = [
       "A real-time anonymous messaging platform with email verification, smart AI suggestions, and customizable feedback settings — built for secure, private communication.",
     longDescription:
       "WhisprNote is a full-stack web app designed to let users collect anonymous feedback through a unique shareable link. Upon registration, users verify their email using a secure OTP system powered by Mailtrap. After verification, they receive a personal link where anyone can send them messages without logging in. Real-time updates are delivered via Socket.io, and Hugging Face's free LLM provides message suggestions for senders. Users can toggle whether they want to receive messages at any time. It's perfect for creators, educators, and teams seeking honest, no-pressure communication.",
-    tech: [
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "MongoDB (Mongoose)",
-      "Mailtrap (Email OTP)",
-      "Socket.io",
-      "Hugging Face Inference API",
-    ],
+    tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Mailtrap", "Socket.io"],
     features: [
       "Email OTP verification using Mailtrap",
       "Anonymous message sending via unique user links",
@@ -236,7 +186,7 @@ export const projects = [
     color: "#F97316",
     gradient: "from-orange-400 to-orange-600",
     demoUrl: "https://whispr-note.vercel.app",
-    githubUrl: "https://github.com/AnkitMishra2006/Whispr-Note", // Add your GitHub repo link here if available
+    githubUrl: "https://github.com/AnkitMishra2006/Whispr-Note",
     status: "Completed",
   },
   {
@@ -246,13 +196,7 @@ export const projects = [
       "A clean, responsive frontend-only website for a fictional Music Academy, built to practice Next.js and Shadcn UI component system.",
     longDescription:
       "Music Academy is a fully responsive static website created as a practice project to explore and implement Next.js and Shadcn UI in a structured layout. The design focuses on clarity, accessibility, and elegant transitions. The site includes sections like Home, About, Instructors, Courses, Testimonials, and Contact — all built using reusable Shadcn components styled with Tailwind CSS. This project was instrumental in refining layout design, component reuse, and navigation structure in a modern React/Next.js setup.",
-    tech: [
-      "Next.js",
-      "Shadcn UI",
-      "Tailwind CSS",
-      "React Icons",
-      "Lucide Icons",
-    ],
+    tech: ["Next.js", "Shadcn UI", "Tailwind CSS", "React Icons", "Lucide Icons"],
     features: [
       "Reusable Shadcn components for fast prototyping",
       "Responsive design optimized for mobile and desktop",
@@ -264,7 +208,7 @@ export const projects = [
     color: "#8B5CF6",
     gradient: "from-violet-500 to-indigo-600",
     demoUrl: "https://music-academy-lyart.vercel.app/",
-    githubUrl: "https://github.com/AnkitMishra2006/Music-Academy", // Add GitHub repo if available
+    githubUrl: "https://github.com/AnkitMishra2006/Music-Academy",
     status: "Completed",
   },
   {
@@ -274,7 +218,7 @@ export const projects = [
       "A responsive movie search platform with TMDB integration, debounced search, and a trending section powered by Appwrite — built to explore modern React workflows.",
     longDescription:
       "React Movie App is a movie discovery platform built using the TMDB API, allowing users to search thousands of films. To avoid excessive API calls, it implements a debounced search input using `react-use`. Every user search is logged in a database using Appwrite — if a search term already exists, its count is incremented. A dynamic trending section then showcases the most-searched movies based on this data. The app is styled with Tailwind CSS and includes features like rating display, language info, and release year for each movie.",
-    tech: ["React", "Vite", "Tailwind CSS", "TMDB API", "Appwrite"],
+    tech: ["React", "Vite", "Tailwind CSS", "Appwrite"],
     features: [
       "Search movies using TMDB API",
       "Debounced search input for API efficiency",
@@ -288,7 +232,7 @@ export const projects = [
     color: "#6366F1",
     gradient: "from-indigo-400 to-indigo-600",
     demoUrl: "https://react-movie-app-kappa-five.vercel.app/",
-    githubUrl: "https://github.com/AnkitMishra2006/React-Movie-App", // Add your GitHub repo link here if available
+    githubUrl: "https://github.com/AnkitMishra2006/React-Movie-App",
     status: "Completed",
   },
   {
@@ -312,10 +256,10 @@ export const projects = [
     color: "#84CC16",
     gradient: "from-lime-400 to-lime-600",
     demoUrl: "https://mojito-cocktails-zeta.vercel.app/",
-    githubUrl: "https://github.com/AnkitMishra2006/mojito-cocktails", // Add your GitHub repo link here if available
+    githubUrl: "https://github.com/AnkitMishra2006/mojito-cocktails",
     status: "Completed",
   },
-];
+]
 
 export const experiences = [
   {
@@ -335,11 +279,7 @@ export const experiences = [
       "Computer Networks",
       "AI/ML",
     ],
-    achievements: [
-      "Maintained 8.265 CGPA",
-      "Completed 15+ technical projects",
-      "Active in coding competitions",
-    ],
+    achievements: ["Maintained 8.265 CGPA", "Completed 15+ technical projects", "Active in coding competitions"],
   },
 
   {
@@ -350,12 +290,7 @@ export const experiences = [
     description:
       "Active member of the Microsoft Student Chapter, participating in technical workshops, hackathons, and community events. Contributing to open-source projects and mentoring junior students in modern development practices.",
     type: "organization",
-    skills: [
-      "Leadership",
-      "Community Building",
-      "Technical Mentoring",
-      "Event Organization",
-    ],
+    skills: ["Leadership", "Community Building", "Technical Mentoring", "Event Organization"],
     achievements: [
       "Organized 5+ technical workshops",
       "Mentored 20+ junior students",
@@ -370,20 +305,14 @@ export const experiences = [
     description:
       "Analyzed educational data and student performance metrics to optimize learning outcomes. Developed data-driven insights for curriculum improvement and created interactive dashboards for tracking student progress and engagement.",
     type: "work",
-    skills: [
-      "Data Analysis",
-      "Python",
-      "Excel",
-      "Dashboard Creation",
-      "Statistical Analysis",
-    ],
+    skills: ["Data Analysis", "Python", "Excel", "Dashboard Creation", "Statistical Analysis"],
     achievements: [
       "Improved student performance tracking by 40%",
       "Created automated reporting systems",
       "Developed predictive models for student success",
     ],
   },
-];
+]
 
 export const navItems = [
   { name: "Home", href: "#home" },
@@ -391,4 +320,4 @@ export const navItems = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-];
+]

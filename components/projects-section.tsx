@@ -22,6 +22,14 @@ export default function ProjectsSection() {
 
   const selectedProjectData = projects.find((p) => p.id === selectedProject)
 
+  const handleDemoClick = (demoUrl: string) => {
+    window.open(demoUrl, "_blank")
+  }
+
+  const handleGithubClick = (githubUrl: string) => {
+    window.open(githubUrl, "_blank")
+  }
+
   return (
     <section className="min-h-screen py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -93,10 +101,22 @@ export default function ProjectsSection() {
 
                 <div className="flex justify-between items-center">
                   <div className="flex space-x-3">
-                    <button className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all duration-300 text-sm">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleDemoClick(project.demoUrl)
+                      }}
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all duration-300 text-sm"
+                    >
                       Live Demo
                     </button>
-                    <button className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all duration-300 text-sm">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleGithubClick(project.githubUrl)
+                      }}
+                      className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-all duration-300 text-sm"
+                    >
                       GitHub
                     </button>
                   </div>
@@ -159,10 +179,16 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300">
+                  <button
+                    onClick={() => handleDemoClick(selectedProjectData.demoUrl)}
+                    className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300"
+                  >
                     View Live Demo
                   </button>
-                  <button className="px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-lg hover:border-gray-500 hover:text-white transition-all duration-300">
+                  <button
+                    onClick={() => handleGithubClick(selectedProjectData.githubUrl)}
+                    className="px-6 py-3 border-2 border-gray-600 text-gray-300 font-medium rounded-lg hover:border-gray-500 hover:text-white transition-all duration-300"
+                  >
                     View Source Code
                   </button>
                 </div>
