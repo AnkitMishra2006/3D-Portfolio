@@ -6,11 +6,15 @@ import { projects } from "@/constants/data"
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
   const [filter, setFilter] = useState("all")
+  const [projectsToShow, setProjectsToShow] = useState(6)
 
   const allTechs = Array.from(new Set(projects.flatMap((project) => project.tech)))
   const filters = ["all", ...allTechs]
 
   const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.tech.includes(filter))
+  const displayedProjects = filteredProjects.slice(0, projectsToShow)
+  const hasMoreProjects = projectsToShow < filteredProjects.length
+  const showingAllProjects = projectsToShow >= filteredProjects.length && filteredProjects.length > 6
 
   const openProjectModal = (projectId: number) => {
     setSelectedProject(projectId)
@@ -30,8 +34,26 @@ export default function ProjectsSection() {
     window.open(githubUrl, "_blank")
   }
 
+  const handleFilterChange = (newFilter: string) => {
+    setFilter(newFilter)
+    setProjectsToShow(6) // Reset to show 6 projects when filter changes
+  }
+
+  const loadMoreProjects = () => {
+    setProjectsToShow((prev) => prev + 6)
+  }
+
+  const showLessProjects = () => {
+    setProjectsToShow(6)
+    // Smooth scroll to projects section
+    const projectsSection = document.getElementById("projects")
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
-    <section className="min-h-screen py-20 px-6">
+    <section id="projects" className="min-h-screen py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8">
           <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">PROJECTS</span>
@@ -47,7 +69,7 @@ export default function ProjectsSection() {
           {filters.map((filterOption) => (
             <button
               key={filterOption}
-              onClick={() => setFilter(filterOption)}
+              onClick={() => handleFilterChange(filterOption)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 filter === filterOption
                   ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white"
@@ -59,9 +81,17 @@ export default function ProjectsSection() {
           ))}
         </div>
 
+        {/* Projects Count Info */}
+        <div className="text-center mb-8">
+          <p className="text-gray-400 text-sm">
+            Showing {displayedProjects.length} of {filteredProjects.length} projects
+            {filter !== "all" && ` (filtered by ${filter})`}
+          </p>
+        </div>
+
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {displayedProjects.map((project) => (
             <div
               key={project.id}
               className={`bg-gradient-to-br ${project.gradient} p-1 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-105`}
@@ -128,6 +158,36 @@ export default function ProjectsSection() {
             </div>
           ))}
         </div>
+
+        {/* Show More Button */}
+        {hasMoreProjects && (
+          <div className="text-center">
+            <button
+              onClick={loadMoreProjects}
+              className="px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg border border-gray-600 hover:border-gray-500"
+            >
+              Show More Projects
+              <span className="ml-2 text-cyan-400">(+{Math.min(6, filteredProjects.length - projectsToShow)})</span>
+            </button>
+            <p className="text-gray-500 text-sm mt-3">
+              {filteredProjects.length - projectsToShow} more projects available
+            </p>
+          </div>
+        )}
+
+        {/* Show Less Button */}
+        {showingAllProjects && (
+          <div className="text-center">
+            <button
+              onClick={showLessProjects}
+              className="px-8 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg border border-orange-500 hover:border-red-400"
+            >
+              Show Less Projects
+              <span className="ml-2 text-orange-200">↑</span>
+            </button>
+            <p className="text-gray-500 text-sm mt-3">Collapse to show only the first 6 projects</p>
+          </div>
+        )}
       </div>
 
       {/* Project Modal */}
