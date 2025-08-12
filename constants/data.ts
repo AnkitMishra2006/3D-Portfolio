@@ -1,8 +1,7 @@
 export const personalInfo = {
   name: "ANKIT KUMAR MISHRA",
   title: "Full Stack Developer and Machine Learning Enthusiast",
-  shortDescription:
-    "Passionate about creating innovative solutions with modern technologies",
+  shortDescription: "Passionate about creating innovative solutions with modern technologies",
   description:
     "Motivated Full Stack Developer with experience in React, Next.js, Flask, FastAPI, and programming languages like Python, C, C++, and Java. Proficient in MySQL and MongoDB, with a strong foundation in OOPS, DBMS, and Data Structures.",
   email: "ankit.kumar.mishra2006@gmail.com",
@@ -10,14 +9,13 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ankit-kumar-mishra-0509982a5/",
   github: "https://github.com/ankitmishra2006",
   codolio: "https://codolio.com/profile/ankitmishra",
-  resume:
-    "https://drive.google.com/file/d/1pPD2jW4DdLCgFev8Id4vw0YXMUTL9ZmK/view?usp=drive_link",
-};
+  resume: "https://drive.google.com/file/d/1pPD2jW4DdLCgFev8Id4vw0YXMUTL9ZmK/view?usp=drive_link",
+}
 
 export const emailConfig = {
   apiUrl: "https://mail-sender-snowy.vercel.app/api/send-email",
   recipientEmail: "ankit.kumar.mishra2006@gmail.com",
-};
+}
 
 export const skills = [
   { name: "JavaScript", color: "#F7DF1E", category: "Programming" },
@@ -81,7 +79,7 @@ export const skills = [
     color: "#FF5733",
     category: "Currently Learning",
   },
-];
+]
 
 export const projects = [
   {
@@ -220,13 +218,7 @@ export const projects = [
       "A fast-paced endless runner game featuring Sonic the Hedgehog, built with JavaScript and the Kaplay game engine. Features dynamic gameplay mechanics, progressive difficulty scaling, and immersive sound effects for an engaging browser-based gaming experience.",
     longDescription:
       "Sonic Ring Run is a modern endless runner game that brings the classic Sonic experience to the web browser. Built entirely with JavaScript and the Kaplay game engine, it features sophisticated sprite animations, precise collision detection, and a dynamic scoring system with multipliers. The game includes responsive controls supporting keyboard, mouse, and touch inputs, making it accessible across all devices. With carefully crafted game physics including gravity simulation and jump mechanics, progressive difficulty scaling, and a comprehensive ranking system from F to S grades, it delivers a console-quality gaming experience with smooth 60fps gameplay and immersive audio design.",
-    tech: [
-      "Kaplay",
-      "JavaScript",
-      "Vite",
-      "2D Game Development",
-      "Web Audio API",
-    ],
+    tech: ["Kaplay", "JavaScript", "Vite", "2D Game Development", "Web Audio API"],
     features: [
       "Endless side-scrolling gameplay with increasing difficulty",
       "Precise collision detection and sprite-based animations",
@@ -250,16 +242,7 @@ export const projects = [
       "An AI-powered resume analyzer that evaluates PDF resumes based on ATS compatibility and key hiring criteria, providing instant feedback and improvement tips to job seekers.",
     longDescription:
       "Resumind is a cutting-edge web application that revolutionizes the way job seekers optimize their resumes. Powered by advanced AI technology, it provides comprehensive analysis across multiple dimensions including ATS compatibility, content quality, structure optimization, and skills assessment. The application features drag & drop PDF upload, real-time AI analysis, beautiful score visualizations with animated gauges, and actionable improvement suggestions. Built with React 19, TypeScript, and Tailwind CSS, it offers a modern, responsive interface with secure authentication and file handling through Puter.js. Users can track their progress with detailed scoring across categories like Tone & Style, Content, Structure, and Skills, making it an essential tool for crafting job-winning resumes.",
-    tech: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Vite",
-      "Puter.js",
-      "React Router",
-      "PDF.js",
-      "Zustand",
-    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vite", "Puter.js", "React Router", "PDF.js", "Zustand"],
     features: [
       "AI-powered resume analysis with instant feedback",
       "ATS score visualization with animated gauges",
@@ -329,12 +312,7 @@ export const projects = [
       "A powerful Chrome extension that intelligently extracts and summarizes article content from any webpage using Google's Gemini AI, providing instant customizable summaries without leaving your browser.",
     longDescription:
       "This Chrome extension revolutionizes how users consume online content by providing instant, AI-powered article summarization using Google Gemini 1.5 Flash. The extension features smart text extraction that automatically detects article content, offers three distinct summary types (brief, detailed, and bullet points), and includes a clean popup interface with one-click copy functionality. Built with Chrome Extension Manifest V3, it securely stores API keys using Chrome's sync storage and works across all websites with proper article structure.",
-    tech: [
-      "JavaScript",
-      "Chrome Extension APIs",
-      "Google Gemini AI",
-      "Manifest V3",
-    ],
+    tech: ["JavaScript", "Chrome Extension APIs", "Google Gemini AI", "Manifest V3"],
     features: [
       "Smart text extraction from any webpage",
       "Three AI-powered summary modes (brief, detailed, bullet points)",
@@ -347,8 +325,7 @@ export const projects = [
     ],
     color: "#4285F4",
     gradient: "from-blue-500 to-indigo-600",
-    demoUrl:
-      "https://drive.google.com/file/d/1y1uShnFD_tyRpvQx387UNsI2Z4ZkH-Uc/view?usp=sharing",
+    demoUrl: "https://drive.google.com/file/d/1y1uShnFD_tyRpvQx387UNsI2Z4ZkH-Uc/view?usp=sharing",
     githubUrl: "https://github.com/AnkitMishra2006/Article-Summarizer",
     status: "Completed",
   },
@@ -415,8 +392,7 @@ export const projects = [
     ],
     color: "#06B6D4",
     gradient: "from-cyan-400 to-cyan-600",
-    demoUrl:
-      "https://react-movie-6m1vqkdwj-ankitmishra2006s-projects.vercel.app/",
+    demoUrl: "https://react-movie-6m1vqkdwj-ankitmishra2006s-projects.vercel.app/",
     githubUrl: "https://github.com/AnkitMishra2006/React-Movie-App",
     status: "Completed",
   },
@@ -427,13 +403,7 @@ export const projects = [
       "A modern, responsive web application for a fictional Music Academy built with Next.js 15, TypeScript, and Tailwind CSS, featuring advanced UI components and smooth animations.",
     longDescription:
       "Music Academy is a fully responsive web application created to showcase modern web development techniques using Next.js 15 and advanced UI components. The project features a comprehensive music academy website with interactive 3D cards, animated backgrounds, testimonial carousels, and instructor showcases. Built with TypeScript for type safety and Tailwind CSS for styling, it includes custom UI components like background beams, wavy backgrounds, infinite moving cards, and sticky scroll reveals. The site demonstrates advanced animation techniques using Framer Motion and includes course management, webinar listings, contact forms, and a complete responsive design system optimized for all devices.",
-    tech: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
+    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion"],
     features: [
       "Interactive 3D card effects with depth and hover animations",
       "Advanced background animations (beams, waves, gradients, spotlight)",
@@ -589,7 +559,7 @@ export const projects = [
     githubUrl: "https://github.com/AnkitMishra2006/AI-Notes-App",
     status: "Completed",
   },
-];
+]
 
 export const experiences = [
   {
@@ -609,27 +579,18 @@ export const experiences = [
       "Computer Networks",
       "AI/ML",
     ],
-    achievements: [
-      "Maintained 8.265 CGPA",
-      "Completed 15+ technical projects",
-      "Active in coding competitions",
-    ],
+    achievements: ["Maintained 8.265 CGPA", "Completed 15+ technical projects", "Active in coding competitions"],
   },
 
   {
     id: 2,
-    title: "Web Developer Member",
+    title: "Web Developer",
     company: "Microsoft Students Chapter (MSC) Club",
     period: "Sep '24 — Present",
     description:
       "Collaborated on maintaining and enhancing the MSC website by implementing new features for events and initiatives. Developed a browser-based game for an internal competition, showcasing creativity, technical expertise, and problem-solving skills.",
     type: "organization",
-    skills: [
-      "Web Development",
-      "JavaScript",
-      "Frontend Design",
-      "Problem Solving",
-    ],
+    skills: ["Web Development", "JavaScript", "Frontend Design", "Problem Solving"],
     achievements: [
       "Implemented new website features for society events",
       "Maintained and optimized MSC's web platform",
@@ -645,21 +606,14 @@ export const experiences = [
     description:
       "Collected, cleaned, and organized large datasets from multiple sources, ensuring data accuracy and integrity. Performed statistical analysis and developed visual reports using Excel and Python (pandas, NumPy) to present actionable insights to stakeholders.",
     type: "work",
-    skills: [
-      "Data Analysis",
-      "Python",
-      "Excel",
-      "Data Cleaning",
-      "Statistical Analysis",
-      "Data Visualization",
-    ],
+    skills: ["Data Analysis", "Python", "Excel", "Data Cleaning", "Statistical Analysis", "Data Visualization"],
     achievements: [
       "Streamlined data cleaning processes, reducing errors by 25%",
       "Created automated Excel and Python-based reporting workflows",
       "Delivered actionable insights leading to improved decision-making",
     ],
   },
-];
+]
 
 export const navItems = [
   { name: "Home", href: "#home" },
@@ -667,4 +621,4 @@ export const navItems = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-];
+]

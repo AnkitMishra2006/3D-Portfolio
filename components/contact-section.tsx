@@ -1,18 +1,16 @@
 "use client"
 
 import type React from "react"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { personalInfo, emailConfig } from "@/constants/data"
-
-interface FormData {
-  name: string
-  email: string
-  message: string
-}
+import { Mail, Linkedin, Github, ExternalLink } from "lucide-react"
 
 export default function ContactSection() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" })
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [statusMessage, setStatusMessage] = useState("")
@@ -86,7 +84,10 @@ export default function ContactSection() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -150,90 +151,98 @@ export default function ContactSection() {
           <span className="bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">CONTACT</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="space-y-6 sm:space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+          {/* Contact Info */}
+          <div className="space-y-8">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6">Let's Connect!</h3>
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
-                I'm always open to discussing new opportunities, collaborations, or just having a chat about technology
-                and development. Feel free to reach out!
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">Let's Connect</h3>
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">
+                I'm always open to discussing new opportunities, interesting projects, or just having a chat about
+                technology. Feel free to reach out!
               </p>
             </div>
 
-            <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-600 hover:border-cyan-500/50 transition-all duration-300">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-lg sm:text-xl">✉️</span>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-gray-400 text-sm">Email</p>
+                <div>
+                  <p className="text-white font-semibold">Email</p>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="text-white hover:text-cyan-400 transition-colors break-all text-sm sm:text-base"
+                    className="text-gray-400 hover:text-cyan-400 transition-colors"
                   >
                     {personalInfo.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-600 hover:border-purple-500/50 transition-all duration-300">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-lg sm:text-xl">💼</span>
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
+                  <div className="w-6 h-6 rounded bg-white flex items-center justify-center text-sm font-bold text-green-600">
+                    C
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-gray-400 text-sm">LinkedIn</p>
-                  <a
-                    href={personalInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-purple-400 transition-colors text-sm sm:text-base"
-                  >
-                    Connect on LinkedIn
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-600 hover:border-green-500/50 transition-all duration-300">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-lg sm:text-xl">🐙</span>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-gray-400 text-sm">GitHub</p>
-                  <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-green-400 transition-colors text-sm sm:text-base"
-                  >
-                    View GitHub Profile
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-600 hover:border-yellow-500/50 transition-all duration-300">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-lg sm:text-xl">💻</span>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-gray-400 text-sm">Codolio</p>
+                <div>
+                  <p className="text-white font-semibold">Codolio</p>
                   <a
                     href={personalInfo.codolio}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-yellow-400 transition-colors text-sm sm:text-base"
+                    className="text-gray-400 hover:text-green-400 transition-colors flex items-center space-x-1"
                   >
-                    View DSA Stats
+                    <span>View my profile</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
+                  <Linkedin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold">LinkedIn</p>
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-blue-400 transition-colors flex items-center space-x-1"
+                  >
+                    <span>Connect with me</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg flex items-center justify-center">
+                  <Github className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold">GitHub</p>
+                  <a
+                    href={personalInfo.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-purple-400 transition-colors flex items-center space-x-1"
+                  >
+                    <span>View my code</span>
+                    <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div>
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          {/* Contact Form */}
+          <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Send a Message</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-white font-medium mb-2">
-                  Name *
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  Name
                 </label>
                 <input
                   type="text"
@@ -242,14 +251,14 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-500 focus:outline-none transition-all duration-300"
-                  placeholder="Your Name"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 transition-colors"
+                  placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-white font-medium mb-2">
-                  Email *
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  Email
                 </label>
                 <input
                   type="email"
@@ -258,14 +267,14 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-500 focus:outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white font-medium mb-2">
-                  Message *
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  Message
                 </label>
                 <textarea
                   id="message"
@@ -274,7 +283,7 @@ export default function ContactSection() {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-500 focus:outline-none transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 transition-colors resize-vertical"
                   placeholder="Your message..."
                 />
               </div>
@@ -282,26 +291,14 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-3 font-medium rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
-                  isSubmitting
-                    ? "bg-gray-600 cursor-not-allowed"
-                    : "bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
-                } text-white`}
+                className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
-              {submitStatus !== "idle" && (
-                <div
-                  className={`p-4 rounded-lg text-center transition-all duration-300 text-sm sm:text-base ${
-                    submitStatus === "success"
-                      ? "bg-green-500/20 border border-green-500/30 text-green-400"
-                      : "bg-red-500/20 border border-red-500/30 text-red-400"
-                  }`}
-                >
-                  {statusMessage}
-                </div>
-              )}
+              {submitStatus === "success" && <p className="text-green-400 text-sm text-center">{statusMessage}</p>}
+
+              {submitStatus === "error" && <p className="text-red-400 text-sm text-center">{statusMessage}</p>}
             </form>
           </div>
         </div>

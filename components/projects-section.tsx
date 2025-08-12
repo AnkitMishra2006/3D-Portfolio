@@ -1,11 +1,30 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { projects } from "@/constants/data"
 
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
   const [projectsToShow, setProjectsToShow] = useState(6)
+
+  // Add this useEffect after the existing state declarations
+  useEffect(() => {
+    if (selectedProject) {
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden"
+      document.body.style.paddingRight = "15px" // Prevent layout shift from scrollbar
+    } else {
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = "unset"
+      document.body.style.paddingRight = "0px"
+    }
+
+    // Cleanup function to restore scroll on unmount
+    return () => {
+      document.body.style.overflow = "unset"
+      document.body.style.paddingRight = "0px"
+    }
+  }, [selectedProject])
 
   const displayedProjects = projects.slice(0, projectsToShow)
   const hasMoreProjects = projectsToShow < projects.length
@@ -191,8 +210,14 @@ export default function ProjectsSection() {
 
       {/* Project Modal */}
       {selectedProject && selectedProjectData && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 pt-20">
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-4xl max-h-[85vh] flex flex-col mt-4">
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 pt-20"
+          onClick={closeProjectModal}
+        >
+          <div
+            className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-4xl max-h-[85vh] flex flex-col mt-4"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-4 sm:p-6 border-b border-gray-700 flex-shrink-0">
               <h3 className="text-xl sm:text-2xl font-bold text-white pr-4">{selectedProjectData.name}</h3>
@@ -205,7 +230,7 @@ export default function ProjectsSection() {
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6">
               <div className="space-y-4 sm:space-y-6">
                 <div>
                   <p className="text-gray-300 leading-relaxed text-sm sm:text-base">

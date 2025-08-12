@@ -58,8 +58,9 @@ export default function SkillsSection() {
 
         <div className="text-center px-4 sm:px-0">
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            Continuously learning and adapting to new technologies. Currently exploring DevOps and mobile app
-            development to expand my skill set.
+            Continuously learning and adapting to new technologies. Currently
+            exploring Mobile app development and Machine Learning to expand my
+            skill set.
           </p>
         </div>
       </div>
