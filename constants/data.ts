@@ -11,7 +11,7 @@ export const personalInfo = {
   github: "https://github.com/ankitmishra2006",
   codolio: "https://codolio.com/profile/ankitmishra",
   resume:
-    "https://drive.google.com/file/d/1pPD2jW4DdLCgFev8Id4vw0YXMUTL9ZmK/view?usp=drive_link",
+    "https://drive.google.com/file/d/1TSxOEjhkFi8-_X1bVVHnYZMZAq9NKpnd/view?usp=sharing",
 };
 
 export const emailConfig = {
