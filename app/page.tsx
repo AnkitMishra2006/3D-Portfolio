@@ -1,27 +1,30 @@
-"use client";
+"use client"
 
-import { useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MinimalScene from "@/components/minimal-scene";
-import HeroSection from "@/components/hero-section";
-import SkillsSection from "@/components/skills-section";
-import ProjectsSection from "@/components/projects-section";
-import ExperienceSection from "@/components/experience-section";
-import ContactSection from "@/components/contact-section";
-import Navigation from "@/components/navigation";
+import { useEffect } from "react"
+import { Canvas } from "@react-three/fiber"
+import { Suspense } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import MinimalScene from "@/components/minimal-scene"
+import HeroSection from "@/components/hero-section"
+import SkillsSection from "@/components/skills-section"
+import ProjectsSection from "@/components/projects-section"
+import ExperienceSection from "@/components/experience-section"
+import ContactSection from "@/components/contact-section"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default function Portfolio() {
   useEffect(() => {
-    // Register GSAP plugins on client side only
-    gsap.registerPlugin(ScrollTrigger);
     // Initialize GSAP animations
-    gsap.set(".fade-in", { opacity: 0, y: 50 });
-    gsap.set(".slide-in-left", { opacity: 0, x: -100 });
-    gsap.set(".slide-in-right", { opacity: 0, x: 100 });
-    gsap.set(".scale-in", { opacity: 0, scale: 0.8 });
+    gsap.set(".fade-in", { opacity: 0, y: 50 })
+    gsap.set(".slide-in-left", { opacity: 0, x: -100 })
+    gsap.set(".slide-in-right", { opacity: 0, x: 100 })
+    gsap.set(".scale-in", { opacity: 0, scale: 0.8 })
 
     // Animate elements on scroll
     gsap.utils.toArray(".fade-in").forEach((element: any) => {
@@ -36,8 +39,8 @@ export default function Portfolio() {
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
-      });
-    });
+      })
+    })
 
     gsap.utils.toArray(".slide-in-left").forEach((element: any) => {
       gsap.to(element, {
@@ -50,8 +53,8 @@ export default function Portfolio() {
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
-      });
-    });
+      })
+    })
 
     gsap.utils.toArray(".slide-in-right").forEach((element: any) => {
       gsap.to(element, {
@@ -64,8 +67,8 @@ export default function Portfolio() {
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
-      });
-    });
+      })
+    })
 
     gsap.utils.toArray(".scale-in").forEach((element: any) => {
       gsap.to(element, {
@@ -78,8 +81,8 @@ export default function Portfolio() {
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
-      });
-    });
+      })
+    })
 
     // Parallax effect for 3D canvas
     gsap.to(".three-canvas", {
@@ -91,12 +94,12 @@ export default function Portfolio() {
         end: "bottom top",
         scrub: true,
       },
-    });
+    })
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
 
   return (
     <div className="relative bg-black text-white overflow-x-hidden">
@@ -130,6 +133,11 @@ export default function Portfolio() {
           <ContactSection />
         </section>
       </div>
+
+      {/* Footer */}
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
-  );
+  )
 }

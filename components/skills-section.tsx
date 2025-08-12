@@ -28,7 +28,7 @@ export default function SkillsSection() {
           {Object.entries(groupedSkills).map(([category, categorySkills]) => (
             <div
               key={category}
-              className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-4 sm:p-6 hover:border-gray-600 transition-all duration-300"
+              className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-xl p-4 sm:p-6 hover:border-gray-500 transition-all duration-300 hover:bg-gray-800/70"
             >
               <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 text-center">{category}</h3>
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
@@ -38,8 +38,14 @@ export default function SkillsSection() {
                     className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border-2 transition-all duration-300 hover:scale-105 cursor-pointer"
                     style={{
                       borderColor: skill.color,
-                      backgroundColor: `${skill.color}20`,
-                      color: skill.color,
+                      backgroundColor: `${skill.color}30`,
+                      color:
+                        skill.name === "Next.js" ||
+                        skill.name === "Socket.io" ||
+                        skill.name === "WebRTC" ||
+                        skill.name === "Expo"
+                          ? "#ffffff"
+                          : skill.color,
                     }}
                   >
                     <span className="font-medium text-xs sm:text-sm">{skill.name}</span>

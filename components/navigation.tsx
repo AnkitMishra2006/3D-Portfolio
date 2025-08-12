@@ -1,111 +1,100 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { navItems } from "@/constants/data";
-import Logo from "./logo";
+import { useEffect, useState } from "react"
+import gsap from "gsap"
+import { navItems } from "@/constants/data"
+import Logo from "./logo"
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = navItems.map((item) => item.href.substring(1));
+      const sections = navItems.map((item) => item.href.substring(1))
       const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
+        const element = document.getElementById(section)
         if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
         }
-        return false;
-      });
+        return false
+      })
 
       if (currentSection) {
-        setActiveSection(currentSection);
+        setActiveSection(currentSection)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
-    // Only run GSAP animations on client side
-    if (typeof window !== "undefined") {
-      gsap.from(".nav-item", {
-        opacity: 0,
-        y: -20,
-        duration: 0.8,
-        delay: 1,
-        stagger: 0.1,
-        ease: "power2.out",
-      });
-    }
-  }, []);
+    gsap.from(".nav-item", {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      delay: 1,
+      stagger: 0.1,
+      ease: "power2.out",
+    })
+  }, [])
 
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
-      if (
-        isMobileMenuOpen &&
-        !target.closest(".mobile-menu") &&
-        !target.closest(".hamburger-button")
-      ) {
-        setIsMobileMenuOpen(false);
+      const target = event.target as Element
+      if (isMobileMenuOpen && !target.closest(".mobile-menu") && !target.closest(".hamburger-button")) {
+        setIsMobileMenuOpen(false)
       }
-    };
+    }
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isMobileMenuOpen]);
+    document.addEventListener("click", handleClickOutside)
+    return () => document.removeEventListener("click", handleClickOutside)
+  }, [isMobileMenuOpen])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (isMobileMenuOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "unset";
-      }
-
-      return () => {
-        document.body.style.overflow = "unset";
-      };
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
     }
-  }, [isMobileMenuOpen]);
+
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isMobileMenuOpen])
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+    const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false); // Close mobile menu after navigation
+      element.scrollIntoView({ behavior: "smooth" })
+      setIsMobileMenuOpen(false) // Close mobile menu after navigation
     }
-  };
+  }
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
 
   const scrollToHome = () => {
-    const element = document.querySelector("#home");
+    const element = document.querySelector("#home")
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-black/80 backdrop-blur-md border-b border-gray-800"
-            : "bg-transparent"
+          isScrolled ? "bg-black/80 backdrop-blur-md border-b border-gray-800" : "bg-transparent"
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -125,17 +114,13 @@ export default function Navigation() {
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   className={`nav-item transition-colors duration-300 relative group ${
-                    activeSection === item.href.substring(1)
-                      ? "text-cyan-400"
-                      : "text-white hover:text-cyan-400"
+                    activeSection === item.href.substring(1) ? "text-cyan-400" : "text-white hover:text-cyan-400"
                   }`}
                 >
                   {item.name}
                   <span
                     className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-300 ${
-                      activeSection === item.href.substring(1)
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
+                      activeSection === item.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   ></span>
                 </button>
@@ -154,9 +139,7 @@ export default function Navigation() {
                 }`}
               ></span>
               <span
-                className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : ""
-                }`}
+                className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`}
               ></span>
               <span
                 className={`w-6 h-0.5 bg-white transition-all duration-300 ${
@@ -196,10 +179,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Items */}
-          <div
-            className="py-6 sm:py-8 px-4 sm:px-6 overflow-y-auto"
-            style={{ maxHeight: "calc(100vh - 140px)" }}
-          >
+          <div className="py-6 sm:py-8 px-4 sm:px-6 overflow-y-auto" style={{ maxHeight: "calc(100vh - 140px)" }}>
             <div className="space-y-4 sm:space-y-6">
               {navItems.map((item, index) => (
                 <button
@@ -212,18 +192,12 @@ export default function Navigation() {
                   }`}
                   style={{
                     animationDelay: `${index * 0.1}s`,
-                    animation: isMobileMenuOpen
-                      ? "slideInRight 0.3s ease-out forwards"
-                      : "none",
+                    animation: isMobileMenuOpen ? "slideInRight 0.3s ease-out forwards" : "none",
                   }}
                 >
                   <div className="flex items-center space-x-3">
-                    <span className="text-base sm:text-lg">
-                      {getMenuIcon(item.name)}
-                    </span>
-                    <span className="font-medium text-sm sm:text-base">
-                      {item.name}
-                    </span>
+                    <span className="text-base sm:text-lg">{getMenuIcon(item.name)}</span>
+                    <span className="font-medium text-sm sm:text-base">{item.name}</span>
                   </div>
                 </button>
               ))}
@@ -235,9 +209,7 @@ export default function Navigation() {
                 <div className="flex justify-center mb-4">
                   <Logo size="md" showText={true} />
                 </div>
-                <p className="text-gray-400 text-xs sm:text-sm mb-4">
-                  Connect with me
-                </p>
+                <p className="text-gray-400 text-xs sm:text-sm mb-4">Connect with me</p>
                 <div className="flex justify-center space-x-3 sm:space-x-4">
                   <a
                     href="https://www.linkedin.com/in/ankit-kumar-mishra-0509982a5/"
@@ -282,7 +254,7 @@ export default function Navigation() {
         }
       `}</style>
     </>
-  );
+  )
 }
 
 // Helper function to get menu icons
@@ -293,6 +265,6 @@ function getMenuIcon(itemName: string): string {
     Projects: "💼",
     Experience: "🎓",
     Contact: "📞",
-  };
-  return iconMap[itemName] || "📄";
+  }
+  return iconMap[itemName] || "📄"
 }
