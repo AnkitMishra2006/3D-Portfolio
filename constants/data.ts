@@ -618,9 +618,9 @@ export const experiences = [
 
   {
     id: 2,
-    title: "Web Developer",
+    title: "Web Developer Member",
     company: "Microsoft Students Chapter (MSC) Club",
-    period: "Sep '24 — Present",
+    period: "Sep '24 — Sep '25",
     description:
       "Collaborated on maintaining and enhancing the MSC website by implementing new features for events and initiatives. Developed a browser-based game for an internal competition, showcasing creativity, technical expertise, and problem-solving skills.",
     type: "organization",
@@ -641,7 +641,7 @@ export const experiences = [
     id: 3,
     title: "Data Analyst",
     company: "V Devi Foundation",
-    period: "Jul '25",
+    period: "May '25",
     description:
       "Collected, cleaned, and organized large datasets from multiple sources, ensuring data accuracy and integrity. Performed statistical analysis and developed visual reports using Excel and Python (pandas, NumPy) to present actionable insights to stakeholders.",
     type: "work",
@@ -657,6 +657,35 @@ export const experiences = [
       "Streamlined data cleaning processes, reducing errors by 25%",
       "Created automated Excel and Python-based reporting workflows",
       "Delivered actionable insights leading to improved decision-making",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Full Stack Web Developer Intern",
+    company: "Gera & Associates",
+    period: "Jun '25 — Aug '25",
+    description:
+      "Built a portfolio website for a construction firm using Flask, HTML, CSS, and JavaScript. Developed two microservices: a Mail Sender API for contact form handling and RoboSheets for Google Sheets integration. Implemented SEO optimization and responsive design.",
+    type: "work",
+    skills: [
+      "Flask",
+      "Node.js",
+      "Express.js",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Bootstrap 5",
+      "Google Sheets API",
+      "SEO",
+      "Vercel",
+    ],
+    achievements: [
+      "Built full-stack portfolio website for 500+ construction projects",
+      "Developed and deployed Mail Sender API microservice on Vercel",
+      "Created RoboSheets service for real-time Google Sheets integration",
+      "Implemented comprehensive SEO optimization with sitemaps and schema markup",
+      "Designed responsive UI/UX with Bootstrap 5 and mobile-first approach",
     ],
   },
 ];
