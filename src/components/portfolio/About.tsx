@@ -16,11 +16,12 @@ export function About() {
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-coral mb-4">
               [ 01 ] About
             </p>
-            <h2 className="font-display text-5xl md:text-6xl leading-[0.95]">
+            <h2 className="sr-only">About Ankit Kumar Mishra</h2>
+            <p aria-hidden="true" className="font-display text-5xl md:text-6xl leading-[0.95]">
               A short
               <br />
               <em className="text-coral not-italic">introduction.</em>
-            </h2>
+            </p>
           </div>
 
           <div className="lg:col-span-8 space-y-8">

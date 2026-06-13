@@ -54,7 +54,7 @@ function ProjectMock({
             {image ? (
               <img
                 src={image}
-                alt={name}
+                alt={`Screenshot of the ${name} project`}
                 className="h-full w-full object-cover pt-11"
               />
             ) : (
@@ -117,11 +117,12 @@ export function Projects() {
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-coral mb-4">
               [ 03 ] Selected work
             </p>
-            <h2 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95]">
+            <h2 className="sr-only">Selected Projects and Portfolio Work</h2>
+            <p aria-hidden="true" className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95]">
               Things I've
               <br />
               <em className="italic text-coral">built.</em>
-            </h2>
+            </p>
           </div>
           <p className="max-w-sm text-cream/60 text-base">
             A handful of projects spanning full-stack web apps, AI tools, real-time systems and
@@ -152,7 +153,7 @@ export function Projects() {
               />
 
               <div className="flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-4">
+                <header className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <span className="font-mono text-xs text-cream/50 tabular-nums">
@@ -194,7 +195,7 @@ export function Projects() {
                       </svg>
                     </a>
                   </div>
-                </div>
+                </header>
 
                 <p className="text-cream/70 text-sm md:text-base leading-relaxed line-clamp-3">
                   {p.description}

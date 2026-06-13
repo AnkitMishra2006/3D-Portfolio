@@ -15,11 +15,12 @@ export function Experience() {
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-coral mb-4">
               [ 04 ] Journey
             </p>
-            <h2 className="font-display text-5xl md:text-7xl leading-[0.95]">
+            <h2 className="sr-only">Professional Experience and Education</h2>
+            <p aria-hidden="true" className="font-display text-5xl md:text-7xl leading-[0.95]">
               Where I've
               <br />
               <em className="italic text-coral">grown.</em>
-            </h2>
+            </p>
           </div>
           <p className="max-w-md text-muted-foreground">
             A timeline of education, communities and roles that shaped how I build today.

@@ -32,11 +32,12 @@ export function Contact() {
             [ 05 ] Contact
           </p>
 
-          <h2 className="font-display text-[14vw] md:text-[9vw] lg:text-[7rem] leading-[0.9] tracking-tight max-w-5xl">
+          <h2 className="sr-only">Contact Me - Open to Opportunities</h2>
+          <p aria-hidden="true" className="font-display text-[14vw] md:text-[9vw] lg:text-[7rem] leading-[0.9] tracking-tight max-w-5xl">
             Let's make
             <br />
             something <em className="italic text-coral">good.</em>
-          </h2>
+          </p>
 
           <p className="mt-6 max-w-xl text-cream/70 text-lg">
             I'm currently open to internships, freelance projects and collaborations. Whether you
@@ -73,6 +74,7 @@ export function Contact() {
                       href={l.href}
                       target={l.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
+                      aria-label={`Visit Ankit's ${l.label} profile`}
                       className="bg-ink p-4 md:p-5 hover:bg-white/5 transition-colors group"
                     >
                       <div className="font-mono text-[10px] uppercase tracking-widest text-cream/50">

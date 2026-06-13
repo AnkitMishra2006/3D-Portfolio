@@ -27,11 +27,12 @@ export function Skills() {
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-coral mb-4">
               [ 02 ] Toolkit
             </p>
-            <h2 className="font-display text-5xl md:text-7xl leading-[0.95]">
+            <h2 className="sr-only">Technical Skills and Toolkit</h2>
+            <p aria-hidden="true" className="font-display text-5xl md:text-7xl leading-[0.95]">
               The stack I
               <br />
               <em className="italic text-coral">reach for.</em>
-            </h2>
+            </p>
           </div>
           <p className="max-w-md text-muted-foreground">
             A curated set of languages, frameworks and tools I use daily — plus a few I'm

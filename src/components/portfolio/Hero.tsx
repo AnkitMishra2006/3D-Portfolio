@@ -19,13 +19,14 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Display headline */}
           <div className="lg:col-span-8 -mt-2 md:-mt-4 lg:-mt-6">
-            <h1 className="font-display text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7.5rem] xl:text-[9rem] leading-[0.92] tracking-tight">
+            <h1 className="sr-only">Ankit Kumar Mishra - Full Stack Software Engineer & Web Developer</h1>
+            <p aria-hidden="true" className="font-display text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7.5rem] xl:text-[9rem] leading-[0.92] tracking-tight text-foreground">
               Building <em className="text-coral not-italic">digital</em>
               <br />
               experiences <span className="italic font-display">that</span>
               <br />
               actually <em className="italic text-coral">ship.</em>
-            </h1>
+            </p>
           </div>
 
           {/* Right column: portrait + intro */}
@@ -54,6 +55,7 @@ export function Hero() {
                     alt="Illustrated portrait of Ankit Kumar Mishra"
                     className="w-full max-w-[280px] block"
                     loading="eager"
+                    fetchpriority="high"
                   />
                 </div>
                 {/* Sticker tag */}

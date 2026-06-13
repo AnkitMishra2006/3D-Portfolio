@@ -53,7 +53,7 @@ export function ProjectDialog({
             {project.image ? (
               <img
                 src={project.image}
-                alt={project.name}
+                alt={`Detailed view of the ${project.name} project`}
                 className="absolute inset-0 h-full w-full object-cover opacity-90"
               />
             ) : (

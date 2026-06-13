@@ -1,6 +1,7 @@
 export const personalInfo = {
   name: "ANKIT KUMAR MISHRA",
   title: "Full Stack Software Engineer",
+  baseUrl: "https://ankit-kumar-mishra.vercel.app/", // Replace with actual deployed domain
   shortDescription:
     "Building production web apps, REST APIs, and microservices that ship",
   description:

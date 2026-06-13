@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { personalInfo } from "@/data/portfolio";
 
 import appCss from "../styles.css?url";
 
@@ -29,18 +30,42 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: `${personalInfo.name} | ${personalInfo.title}` },
+      {
+        name: "description",
+        content: personalInfo.description,
+      },
+      {
+        name: "keywords",
+        content:
+          "Ankit Kumar Mishra, Full Stack Engineer, Software Developer, Web Development, React, Next.js, Node.js, Python, Portfolio, ML Engineer",
+      },
+      { name: "author", content: personalInfo.name },
+      { name: "robots", content: "index, follow" },
+      {
+        property: "og:title",
+        content: `${personalInfo.name} | ${personalInfo.title}`,
+      },
+      { property: "og:description", content: personalInfo.shortDescription },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:url", content: personalInfo.baseUrl },
+      { property: "og:image", content: `${personalInfo.baseUrl}/favicon.png` },
+      { property: "og:site_name", content: `${personalInfo.name} Portfolio` },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: `${personalInfo.name} | ${personalInfo.title}`,
+      },
+      { name: "twitter:description", content: personalInfo.shortDescription },
     ],
     links: [
+      { rel: "canonical", href: personalInfo.baseUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap",
@@ -55,10 +80,40 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: personalInfo.name,
+    jobTitle: personalInfo.title,
+    url: personalInfo.baseUrl,
+    sameAs: [personalInfo.linkedin, personalInfo.github, personalInfo.leetcode],
+    description: personalInfo.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "New Delhi",
+      addressCountry: "India",
+    },
+  };
+
+  const websiteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${personalInfo.name} Portfolio`,
+    url: personalInfo.baseUrl,
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+        />
       </head>
       <body suppressHydrationWarning>
         {children}
