@@ -40,6 +40,10 @@ export const Route = createRootRoute({
         content:
           "Ankit Kumar Mishra, Full Stack Engineer, Software Developer, Web Development, React, Next.js, Node.js, Python, Portfolio, ML Engineer",
       },
+      {
+        name: "google-site-verification",
+        content: "1exsCnp8jDl45AjztvI1dnBkjsMJ8Arp58oSqh70s60",
+      },
       { name: "author", content: personalInfo.name },
       { name: "robots", content: "index, follow" },
       {
