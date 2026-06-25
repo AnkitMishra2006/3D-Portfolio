@@ -1,7 +1,25 @@
 export const personalInfo = {
-  name: "ANKIT KUMAR MISHRA",
+  // Proper-case legal name — used in the page title, footer and schema.
+  name: "Ankit Kumar Mishra",
+  // The shorter, most-searched form of the name. Drives the <title> and
+  // schema `alternateName` so the site ranks for both "Ankit Mishra" and
+  // "Ankit Kumar Mishra".
+  shortName: "Ankit Mishra",
   title: "Full Stack Software Engineer",
-  baseUrl: "https://ankit-kumar-mishra.vercel.app/", // Replace with actual deployed domain
+  role: "Full Stack Web Developer & Software Engineer",
+  // The single source of truth for the production domain. Everything that
+  // builds an absolute URL (canonical, OG tags, JSON-LD) reads from here.
+  // No trailing slash — absolute URLs are built as `${baseUrl}/path`.
+  baseUrl: "https://ankitmishra.tech",
+  // Used verbatim as the <title> tag. ~58 chars, leads with the name and the
+  // "web developer" intent the site wants to rank for.
+  siteTitle: "Ankit Mishra | Full Stack Web Developer & Software Engineer",
+  // ~155 char description optimised for the SERP snippet (Google truncates
+  // around 160). Kept separate from the long on-page bio below.
+  metaDescription:
+    "Ankit Mishra — full-stack web developer and software engineer in New Delhi. I build production web apps, REST APIs and microservices with React, Node.js and Python.",
+  // Path (relative to /public) of the 1200×630 social-share image.
+  ogImage: "/og-image.png",
   shortDescription:
     "Building production web apps, REST APIs, and microservices that ship",
   description:
@@ -9,12 +27,68 @@ export const personalInfo = {
   email: "ankit.kumar.mishra2006@gmail.com",
   phone: "+91-9354541614",
   location: "New Delhi, India",
+  university: "Maharaja Surajmal Institute of Technology",
+  currentCompany: "Medvertex",
+  // Topics the person is an authority on — surfaced in Person JSON-LD as
+  // `knowsAbout` to reinforce topical relevance for search engines.
+  expertise: [
+    "Full Stack Web Development",
+    "Software Engineering",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "Python",
+    "REST API Development",
+    "Microservices",
+    "MongoDB",
+    "System Design",
+    "Machine Learning",
+  ],
+  // Languages spoken — surfaced in Person schema as `knowsLanguage`.
+  languages: ["English", "Hindi"],
   linkedin: "https://linkedin.com/in/ankitkumarmishra06",
   github: "https://github.com/AnkitMishra2006",
   leetcode: "https://leetcode.com/u/Ankit-Mishra2006",
   resume:
     "https://drive.google.com/file/d/1QQ7aF9Dc9VIWMSbqS0F4P4Oz46irperV/view?usp=sharing",
 };
+
+// Visible FAQ content. This doubles as crawlable, entity-rich copy and as the
+// source for FAQPage structured data (Google requires the answers to be
+// visible on the page to qualify for FAQ rich results).
+export const faqs = [
+  {
+    question: "Who is Ankit Mishra?",
+    answer:
+      "Ankit Mishra (Ankit Kumar Mishra) is a full-stack web developer and software engineer based in New Delhi, India. He has 2+ years of production experience building web applications, REST APIs, and microservices across healthcare, ed-tech, and enterprise domains using React, Next.js, Node.js, and Python.",
+  },
+  {
+    question: "What does Ankit Mishra do as a web developer?",
+    answer:
+      "Ankit designs and ships full-stack products end to end — from accessible, responsive front-ends in React, Next.js, and TypeScript to scalable back-ends and APIs in Node.js, Express, and Flask, backed by MongoDB and SQL databases. He also works with Docker, CI/CD pipelines, and cloud deployment, and has delivered HIPAA-compliant healthcare systems.",
+  },
+  {
+    question: "Which technologies and skills does Ankit Mishra specialize in?",
+    answer:
+      "His core stack includes JavaScript, TypeScript, Python, React.js, Next.js, Node.js, Express.js, Flask, MongoDB, and SQL. He also works with REST APIs, microservices, system design, Docker, GitHub Actions, and has a strong foundation in data structures, algorithms, and machine learning.",
+  },
+  {
+    question: "Is Ankit Mishra available for hire or freelance projects?",
+    answer:
+      "Yes. Ankit is open to full-time roles, internships, freelance work, and collaborations on web development and software engineering projects. You can reach him through the contact form on this site or by email at ankit.kumar.mishra2006@gmail.com.",
+  },
+  {
+    question: "Where is Ankit Mishra located?",
+    answer:
+      "Ankit is based in New Delhi, India, and is available for remote work with teams and clients worldwide. He currently builds RCM healthcare software remotely for a US-based company.",
+  },
+  {
+    question: "How can I contact Ankit Mishra?",
+    answer:
+      "You can contact Ankit via the contact form on this portfolio, by email at ankit.kumar.mishra2006@gmail.com, or by connecting on LinkedIn and GitHub. Links to all of his profiles are in the contact section below.",
+  },
+];
 
 export const emailConfig = {
   apiUrl: "https://mail-sender-snowy.vercel.app/api/send-email",
@@ -740,5 +814,6 @@ export const navItems = [
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
+  { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ];

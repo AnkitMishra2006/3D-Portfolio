@@ -52,10 +52,13 @@ export function Hero() {
                 <div className="rounded-[1.7rem] bg-ink/95 overflow-hidden">
                   <img
                     src={portrait}
-                    alt="Illustrated portrait of Ankit Kumar Mishra"
+                    alt="Portrait of Ankit Mishra, full stack web developer and software engineer"
                     className="w-full max-w-[280px] block"
                     loading="eager"
                     fetchpriority="high"
+                    decoding="async"
+                    width={433}
+                    height={577}
                   />
                 </div>
                 {/* Sticker tag */}

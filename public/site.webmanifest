@@ -1,0 +1,17 @@
+{
+  "name": "Ankit Mishra — Full Stack Web Developer",
+  "short_name": "Ankit Mishra",
+  "description": "Portfolio of Ankit Mishra, a full-stack web developer and software engineer building production web apps with React, Node.js and Python.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f3",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

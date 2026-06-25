@@ -54,8 +54,12 @@ function ProjectMock({
             {image ? (
               <img
                 src={image}
-                alt={`Screenshot of the ${name} project`}
+                alt={`Screenshot of the ${name} project by Ankit Mishra`}
                 className="h-full w-full object-cover pt-11"
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={600}
               />
             ) : (
               <div className="pt-8 flex items-center justify-center w-full h-full">
