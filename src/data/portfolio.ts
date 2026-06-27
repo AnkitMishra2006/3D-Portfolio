@@ -20,6 +20,10 @@ export const personalInfo = {
     "Ankit Mishra — full-stack web developer and software engineer in New Delhi. I build production web apps, REST APIs and microservices with React, Node.js and Python.",
   // Path (relative to /public) of the 1200×630 social-share image.
   ogImage: "/og-image.png",
+  // ISO date of the last meaningful content update — drives the ProfilePage
+  // `dateModified` freshness signal and the sitemap `lastmod`. Update when you
+  // ship notable content changes.
+  siteUpdated: "2026-06-27",
   shortDescription:
     "Building production web apps, REST APIs, and microservices that ship",
   description:

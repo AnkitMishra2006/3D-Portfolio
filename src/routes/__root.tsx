@@ -1,6 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { personalInfo } from "@/data/portfolio";
-import { buildStructuredData } from "@/lib/seo";
+import { buildStructuredData, serializeJsonLd } from "@/lib/seo";
 
 import appCss from "../styles.css?url";
 
@@ -48,7 +48,11 @@ export const Route = createRootRoute({
           content: "1exsCnp8jDl45AjztvI1dnBkjsMJ8Arp58oSqh70s60",
         },
         { name: "author", content: personalInfo.name },
-        { name: "robots", content: "index, follow, max-image-preview:large" },
+        {
+          name: "robots",
+          content:
+            "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        },
         { name: "theme-color", content: "#0a0a0a" },
         // Open Graph
         { property: "og:title", content: personalInfo.siteTitle },
@@ -107,7 +111,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
         />
       </head>
       <body suppressHydrationWarning>

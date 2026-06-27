@@ -69,9 +69,9 @@ export function Hero() {
             </div>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
-              Hi, I'm <span className="text-foreground font-medium">{personalInfo.name.split(" ")[0]}</span> — a
-              full-stack software engineer with 2+ years shipping production web apps, REST APIs and
-              microservices with React, Next.js, Node.js and Flask.
+              Hi, I'm <span className="text-foreground font-medium">{personalInfo.shortName}</span> — a
+              full-stack web developer and software engineer with 2+ years shipping production web
+              apps, REST APIs and microservices with React, Next.js, Node.js and Flask.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">

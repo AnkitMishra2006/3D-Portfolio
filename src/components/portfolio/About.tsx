@@ -26,8 +26,9 @@ export function About() {
 
           <div className="lg:col-span-8 space-y-8">
             <p className="font-display text-2xl md:text-3xl leading-snug text-balance">
-              I'm a Computer Science engineer based in Delhi with a love for building things that
-              feel <em className="italic text-coral">obvious</em> to use and{" "}
+              I'm <em className="not-italic text-coral">Ankit Mishra</em>, a Computer Science
+              engineer based in Delhi with a love for building things that feel{" "}
+              <em className="italic text-coral">obvious</em> to use and{" "}
               <em className="italic">elegant</em> under the hood.
             </p>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">

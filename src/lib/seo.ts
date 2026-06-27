@@ -1,6 +1,22 @@
 import { personalInfo, faqs, projects, experiences } from "@/data/portfolio";
 
 /**
+ * Serializes a JSON-LD object for safe inline embedding inside a
+ * <script type="application/ld+json"> tag.
+ *
+ * `JSON.stringify` alone is unsafe inside HTML: a literal `<` (e.g. a stray
+ * `</script>` in any content field) would terminate the script element early.
+ * Escaping `<`, `>` and `&` to their unicode escapes keeps the JSON valid
+ * while making it impossible to break out of the tag.
+ */
+export function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+}
+
+/**
  * Builds a single, fully-linked schema.org `@graph` for the site.
  *
  * Using one connected graph (with `@id` cross-references) instead of several
@@ -76,6 +92,7 @@ export function buildStructuredData() {
     about: { "@id": personId },
     mainEntity: { "@id": personId },
     inLanguage: "en-US",
+    dateModified: personalInfo.siteUpdated,
     primaryImageOfPage: {
       "@type": "ImageObject",
       url: ogImageUrl,

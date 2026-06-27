@@ -56,7 +56,9 @@ export function Nav() {
           </a>
 
           <button
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setOpen((o) => !o)}
           >
@@ -67,7 +69,7 @@ export function Nav() {
         </div>
 
         {open && (
-          <div className="md:hidden mt-3 rounded-3xl bg-background/95 backdrop-blur-xl border border-border p-5 shadow-xl">
+          <div id="mobile-menu" className="md:hidden mt-3 rounded-3xl bg-background/95 backdrop-blur-xl border border-border p-5 shadow-xl">
             <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <a
